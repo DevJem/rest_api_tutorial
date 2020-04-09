@@ -6,7 +6,9 @@ from rest_framework import status
 from rest_framework.test import APIClient
 
 from core.models import Tag
+
 from recipe.serializers import TagSerializer
+
 
 TAGS_URL = reverse('recipe:tag-list')
 
@@ -76,7 +78,7 @@ class PrivateTagsApiTests(TestCase):
 
         self.assertTrue(exists)
 
-    def test_create_tag_invlalid(self):
+    def test_create_tag_invalid(self):
         """Test creating a new tag with invalid payload"""
         payload = {'name': ''}
         res = self.client.post(TAGS_URL, payload)
